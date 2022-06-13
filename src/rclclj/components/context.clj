@@ -6,7 +6,8 @@
   protocols.context/IContext
   (valid? [this]
     this)
-  (shutdown! [this]
+  (shutdown! [this reason]
+    (println reason)
     this))
 
 (s/defn new-context :- protocols.context/IContext

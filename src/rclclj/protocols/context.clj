@@ -4,5 +4,5 @@
   "Protocol for context management"
   (valid? [this]
     "Checks if the current context is valid")
-  (shutdown! [this reason]))
-
+  (shutdown! [this reason]
+    "Release resources"))
