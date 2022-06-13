@@ -1,4 +1,4 @@
-(ns rclclj.components.node-test
+(ns unit.rclclj.components.node-test
   (:require [schema.test :as st]
             [rclclj.protocols.node :as protocols.node]
             [clojure.test :refer [testing is]]
