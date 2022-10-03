@@ -1,10 +1,11 @@
 (ns rclclj.components.node
-  (:require [schema.core :as s]
+  (:require [clojure.string :as string]
+            [rclclj.models.node :as models.node]
             [rclclj.protocols.node :as protocols.node]
-            [clojure.string :as string]))
+            [schema.core :as s]))
 
 (s/defrecord Node [name :- s/Str
-                   config]
+                   config :- models.node/Config]
   protocols.node/INode
   (name! [_]
     name)
@@ -16,7 +17,8 @@
          (str "/")))
   (logger! [_]
     nil)
-  (enable_rosout! [_ _enable]
+  (enable-rosout! [_ enable]
+    ;; TODO: Check how to enable the rosout value without creating a new Node.
     nil))
 
 (s/defn new-node :- protocols.node/INode
