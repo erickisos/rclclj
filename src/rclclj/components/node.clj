@@ -15,6 +15,8 @@
          (string/join "/")
          (str "/")))
   (logger! [_]
+    nil)
+  (enable_rosout! [_ _enable]
     nil))
 
 (s/defn new-node :- protocols.node/INode

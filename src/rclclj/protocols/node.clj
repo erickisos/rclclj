@@ -5,4 +5,5 @@
   (name! [this])
   (namespace! [this])
   (fully-qualified-name! [this])
-  (logger! [this]))
+  (logger! [this])
+  (enable_rosout! [this, enable]))
