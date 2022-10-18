@@ -5,7 +5,7 @@
             [matcher-combinators.test :refer [match?]]
             [rclclj.components.node :as components.node]))
 
-(def mock-node (components.node/new-node "mock" {:namespace "test"}))
+(def mock-node (components.node/create-node "mock" {:namespace "test"}))
 
 (st/deftest node-tests
   (testing "that we can get the node name"

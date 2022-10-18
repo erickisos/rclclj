@@ -1,4 +1,4 @@
-(ns rclclj.models.node
+(ns rclclj.models.context
   (:require [schema.core :as s]))
 
 (def config-skeleton {:name                {:schema s/Str}

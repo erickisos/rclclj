@@ -6,4 +6,7 @@
   (namespace! [this])
   (fully-qualified-name! [this])
   (logger! [this])
-  (enable-rosout! [this, enable]))
+  (valid? [this])
+  (spin! [this])
+  (spin-once! [this])
+  (rosout? [this, enable]))

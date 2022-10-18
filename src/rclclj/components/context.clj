@@ -1,8 +1,9 @@
 (ns rclclj.components.context
-  (:require [rclclj.protocols.context :as protocols.context]
+  (:require [rclclj.models.context :as models.context]
+            [rclclj.protocols.context :as protocols.context]
             [schema.core :as s]))
 
-(s/defrecord Context [config]
+(s/defrecord Context [config :- models.context/Config]
   protocols.context/IContext
   (valid? [this]
     this)
@@ -10,6 +11,6 @@
     (println reason)
     this))
 
-(s/defn new-context :- protocols.context/IContext
-  [config]
+(s/defn create-context :- protocols.context/IContext
+  [config :- models.context/Config]
   (->Context config))
