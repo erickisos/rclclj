@@ -22,8 +22,9 @@
     nil)
   (valid? [_]
     (protocols.context/valid? context))
-  (spin! [_]
-    nil)
+  (spin! [this]
+    (while (protocols.node/valid? this)
+      (protocols.node/spin-once! this)))
   (spin-once! [_]
     nil)
   (rosout? [_ enable]
