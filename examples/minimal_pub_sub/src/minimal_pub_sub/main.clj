@@ -7,4 +7,4 @@
   []
   (let [context   {}
         publisher (node/create "minimal_publisher" context)]
-    (ros/spin)))
+    (ros/spin publisher)))

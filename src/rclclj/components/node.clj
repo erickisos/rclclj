@@ -11,7 +11,11 @@
     (string/replace name #"[^a-zA-Z0-9_]" "_")))
 
 (s/defrecord Node [name    :- s/Str
-                   context :- protocols.context/IContext]
+                   context :- protocols.context/IContext
+                   rosout  :- s/Bool
+                   clients :- []
+                   services :- []
+                   subscriptions :- []]
   protocols.node/INode
   (name! [_]
     (sanitize! name))
@@ -38,6 +42,10 @@
     enable))
 
 (s/defn create-node :- protocols.node/INode
+  ([name :- s/Str
+    context :- protocols.context/IContext
+    rosout :- s/Bool]
+   (->Node name context rosout))
   ([name    :- s/Str
     context :- protocols.context/IContext]
    (->Node name context))
