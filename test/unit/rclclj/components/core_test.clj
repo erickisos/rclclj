@@ -1,6 +1,8 @@
 (ns unit.rclclj.components.core-test
-  (:require [schema.test :as st]))
-
+  (:require
+   [clojure.test :refer [is testing]]
+   [matcher-combinators.test :refer [match?]]
+   [schema.test :as st]))
 
 (st/deftest core-tests
   (testing ""

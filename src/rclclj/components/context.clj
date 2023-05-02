@@ -1,7 +1,8 @@
 (ns rclclj.components.context
-  (:require [rclclj.models.context :as models.context]
-            [rclclj.protocols.context :as protocols.context]
-            [schema.core :as s]))
+  (:require
+   [rclclj.models.context :as models.context]
+   [rclclj.protocols.context :as protocols.context]
+   [schema.core :as s]))
 
 (s/defrecord Context [config :- models.context/Config]
   protocols.context/IContext

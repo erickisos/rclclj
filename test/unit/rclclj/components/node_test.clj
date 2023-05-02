@@ -1,9 +1,10 @@
 (ns unit.rclclj.components.node-test
-  (:require [schema.test :as st]
-            [rclclj.protocols.node :as protocols.node]
-            [clojure.test :refer [testing is]]
-            [matcher-combinators.test :refer [match?]]
-            [rclclj.components.node :as components.node]))
+  (:require
+   [clojure.test :refer [is testing]]
+   [matcher-combinators.test :refer [match?]]
+   [rclclj.components.node :as components.node]
+   [rclclj.protocols.node :as protocols.node]
+   [schema.test :as st]))
 
 (def mock-node (components.node/create-node "mock" {:namespace "test"}))
 (def mock-node-02 (components.node/create-node "mock-valid" {:namespace "another-test"}))
