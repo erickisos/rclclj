@@ -2,8 +2,8 @@
   (:require
    [rclclj.components.context :as components.context]
    [rclclj.components.node :as components.node]
-   [rclclj.models.node :as models.node]
    [rclclj.protocols.node :as protocols.node]
+   [rclclj.models.context :as models.context]
    [schema.core :as s]))
 
 (s/defn init
@@ -12,7 +12,7 @@
 
 (s/defn create-node :- protocols.node/INode
   [name    :- s/Str
-   context :- models.node/Config]
+   context :- models.context/Config]
   (components.node/create-node name context))
 
 (s/defn spin
