@@ -5,16 +5,22 @@
    [rclclj.protocols.node :as protocols.node]
    [schema.core :as s]))
 
+(s/defn sanitize! :- (s/maybe s/Str)
+  [name :- (s/maybe s/Str)]
+  (when name
+    (string/replace name #"[^a-zA-Z0-9_]" "_")))
+
 (s/defrecord Node [name    :- s/Str
                    context :- protocols.context/IContext]
   protocols.node/INode
   (name! [_]
-    name)
+    (sanitize! name))
   (namespace! [_]
-    (:namespace context))
+    (sanitize! (:namespace context)))
   (fully-qualified-name! [this]
     (->> (protocols.node/name! this)
          (vector (protocols.node/namespace! this))
+         (filter not-empty)
          (string/join "/")
          (str "/")))
   (logger! [_]
