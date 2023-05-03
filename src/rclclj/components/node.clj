@@ -12,7 +12,7 @@
 
 (s/defrecord Node [name    :- s/Str
                    context :- protocols.context/IContext
-                   rosout  :- s/Bool
+                   enable-rosout?  :- s/Bool
                    clients :- []
                    services :- []
                    subscriptions :- []]
@@ -36,18 +36,35 @@
     (while (protocols.node/valid? this)
       (protocols.node/spin-once! this)))
   (spin-once! [_]
-    nil)
-  (rosout? [_ enable]
-    ;; TODO: Check how to enable the rosout value without creating a new Node.
-    enable))
+    )
+  (rosout? [_]
+    enable-rosout?))
 
 (s/defn create-node :- protocols.node/INode
   ([name :- s/Str
-    context :- protocols.context/IContext
-    rosout :- s/Bool]
-   (->Node name context rosout))
+    context     :- protocols.context/IContext
+    enable-rosout? :- s/Bool
+    clients     :- [s/Any]
+    services    :- [s/Any]
+    subscriptions :- [s/Any]]
+   (->Node name context enable-rosout? clients services subscriptions))
+  ([name :- s/Str
+    context     :- protocols.context/IContext
+    enable-rosout? :- s/Bool
+    clients     :- [s/Any]
+    services    :- [s/Any]]
+   (create-node name context enable-rosout? clients services []))
+  ([name :- s/Str
+    context     :- protocols.context/IContext
+    enable-rosout? :- s/Bool
+    clients     :- [s/Any]]
+   (create-node name context enable-rosout? clients []))
+  ([name :- s/Str
+    context     :- protocols.context/IContext
+    enable-rosout? :- s/Bool]
+   (create-node name context enable-rosout? [])
   ([name    :- s/Str
     context :- protocols.context/IContext]
-   (->Node name context))
+   (create-node name context true))
   ([name :- s/Str]
-   (->Node name nil)))
+   (create-node name nil)))

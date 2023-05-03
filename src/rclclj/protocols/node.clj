@@ -9,4 +9,4 @@
   (valid? [this])
   (spin! [this])
   (spin-once! [this])
-  (rosout? [this, enable]))
+  (rosout? [this]))
